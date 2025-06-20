@@ -1,0 +1,116 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "Conexión a Base de Datos (Supabase)",
+      "description": "Acciones para leer y actualizar la tabla 'requisitos' en Supabase",
+      "version": "v1.0.0"
+    },
+    "servers": [
+      {
+        "url": "https://hook.eu2.make.com"
+      }
+    ],
+    "paths": {
+      "/saya7oc0dy6eq9xz8ykecgdouqplfqi7": {
+        "post": {
+          "summary": "Descargar requisitos de la base de datos",
+          "description": "Descargamos todos los datos de la tabla 'requisitos_prueba' desde Supabase",
+          "operationId": "descargar_todos_requisitos",
+          "requestBody": {
+            "required": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Lista de requisitos",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "number" },
+                        "requerimiento_id": { "type": "string" },
+                        "descripcion": { "type": "string" },
+                        "referencia_normativa": { "type": "string" },
+                        "prioridad": { "type": "string" },
+                        "justificacion": { "type": "string" },
+                        "metodo_validacion": { "type": "string" },
+                        "dependencias_exclusiones": { "type": "string" },
+                        "categoria": { "type": "string" },
+                        "ejemplo_practico": { "type": "string" },
+                        "fecha_creacion": { "type": "string", "format": "date-time" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/pa31rcc7bjrfudvcwfs9jhdgmtuv538t": {
+        "post": {
+          "summary": "Subir requisitos a la base de datos",
+          "description": "Recibe un JSON con un array de requisitos y los inserta o actualiza en la tabla de Supabase.",
+          "operationId": "subir_requisitos",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "requisitos": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "requerimiento_id": { "type": "string" },
+                          "descripcion": { "type": "string" },
+                          "referencia_normativa": { "type": "string" },
+                          "prioridad": { "type": "string" },
+                          "justificacion": { "type": "string" },
+                          "metodo_validacion": { "type": "string" },
+                          "dependencias_exclusiones": { "type": "string" },
+                          "categoria": { "type": "string" },
+                          "ejemplo_practico": { "type": "string" },
+                          "fecha_creacion": { "type": "string", "format": "date-time" }
+                        }
+                      }
+                    }
+                  },
+                  "required": ["requisitos"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Operación completada exitosamente.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "resultado": { "type": "string" },
+                      "registros_procesados": { "type": "number" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  

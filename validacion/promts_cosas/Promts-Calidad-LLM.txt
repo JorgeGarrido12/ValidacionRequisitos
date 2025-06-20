@@ -1,0 +1,82 @@
+Actúa como un ingeniero de requisitos experto con experiencia en la evaluación de requisitos de software según los estándares **ISO/IEC/IEEE 29148:2018** (Sistemas y software - Requisitos de ingeniería) e **ISO/IEC 25010:2011** (Modelo de calidad para sistemas y software). Tu tarea es evaluar la claridad, comprensibilidad y ausencia de ambigüedades de un conjunto de requisitos de software que se te proporcionarán en formato CSV con los siguientes campos: `id`, `requerimiento_id`, `descripcion`, `referencia_normativa`, `prioridad`, `justificacion`, `metodo_validacion`, `dependencias_exclusiones`, `categoria`, `ejemplo_practico`, `fecha_creacion`, `tag`, `norma_sugerida`.
+
+### Contexto
+- **Objetivo**: Determinar si los requisitos son claros, comprensibles y libres de ambigüedades, siguiendo las mejores prácticas de ingeniería de requisitos.
+- **Estándares**:
+  - **ISO/IEC/IEEE 29148:2018**: Los requisitos deben ser completos, consistentes, trazables, verificables, específicos, medibles, alcanzables, relevantes y con un tiempo definido (criterios SMART). Deben evitar términos ambiguos (ej. "rápido", "eficiente") y proporcionar criterios de aceptación claros.
+  - **ISO/IEC 25010:2011**: Los requisitos deben alinearse con atributos de calidad como funcionalidad, usabilidad y seguridad, asegurando que sean comprensibles para los stakeholders.
+- **Plantillas**:
+  - **FRS (Especificación de Requisitos Funcionales)**: Incluye campos como ID, Descripción, Prioridad, Criterios de Aceptación, Dependencias y Ejemplo Práctico. Un buen requisito en FRS es específico, con una descripción clara, criterios de aceptación medibles y dependencias bien definidas.
+  - **BRD (Documento de Requisitos de Negocio)**: Define objetivos de alto nivel, alcance y necesidades de negocio.
+  - **RTM (Matriz de Trazabilidad de Requisitos)**: Vincula cada requisito a pruebas, componentes o normas, asegurando trazabilidad.
+- **Criterios de evaluación**:
+  - **Claridad**: El lenguaje es preciso, sin términos vagos o ambiguos.
+  - **Comprensibilidad**: El requisito es entendible para stakeholders técnicos y no técnicos.
+  - **Ausencia de ambigüedades**: No hay interpretaciones múltiples; los criterios de aceptación y dependencias están bien definidos.
+  - **Conformidad con estándares**: Cumple con ISO/IEC/IEEE 29148:2018 (SMART) y se alinea con ISO/IEC 25010:2011.
+
+### Ejemplo de requisito claro
+**Formato**: 
+```
+"id": "1",
+"requerimiento_id": "SIR-002",
+"descripcion": "El sistema debe autenticar a los usuarios mediante credenciales fuertes con doble factor (2FA).",
+"referencia_normativa": "NIST SP 800-53 Rev.5 IA-2(1), ISO 27002:2022 5.17, DISA STIG V-222390",
+"prioridad": "Alta",
+"justificacion": "Previene el acceso fraudulento por robo o suplantación de credenciales, especialmente en entornos expuestos (teletrabajo, móviles).",
+"metodo_validacion": "Revisión de política de autenticación y pruebas de acceso con 2FA.",
+"dependencias_exclusiones": "Requiere integración de mecanismo 2FA seguro. Relacionado con SIR-001 y SIR-006.",
+"categoria": "Identification and Authentication Failures (OWASP A07:2021), CWE-287",
+"ejemplo_practico": "Uso de aplicación de autenticación OTP como Google Authenticator o claves FIDO2.",
+"fecha_creacion": "2025-04-11T16:16:12.455682+00:00",
+"tag": "",
+"norma_sugerida": ""
+```
+**Evaluación**: Puntuación 5/5. El requisito es claro, específico (menciona 2FA), medible (método de validación definido), y trazable (referencias normativas y dependencias claras). El ejemplo práctico mejora la comprensibilidad.
+
+### Ejemplo de requisito ambiguo
+**Formato**:
+```
+"id": "99",
+"requerimiento_id": "SIR-099",
+"descripcion": "El sistema debe ser rápido y seguro.",
+"referencia_normativa": "",
+"prioridad": "Alta",
+"justificacion": "Para mejorar la experiencia del usuario.",
+"metodo_validacion": "Pruebas de rendimiento.",
+"dependencias_exclusiones": "",
+"categoria": "",
+"ejemplo_practico": "",
+"fecha_creacion": "2025-04-11T16:16:12.455682+00:00",
+"tag": "",
+"norma_sugerida": ""
+```
+**Evaluación**: Puntuación 2/5. La descripción usa términos vagos ("rápido", "seguro") sin criterios medibles. Falta trazabilidad (sin referencias normativas ni dependencias) y un ejemplo práctico. La justificación es genérica.
+
+### Instrucciones
+1. Evalúa cada requisito proporcionado en el formato CSV.
+2. Asigna una puntuación de claridad de 1 a 5:
+   - 5: Excelente (cumple todos los criterios SMART, claro, comprensible, sin ambigüedades).
+   - 4: Bueno (cumple la mayoría de los criterios, pero con pequeños problemas, como un término poco específico).
+   - 3: Aceptable (algunos problemas de claridad o trazabilidad, pero comprensible).
+   - 2: Deficiente (términos ambiguos, falta de criterios de aceptación o trazabilidad).
+   - 1: Muy deficiente (incomprensible, ambiguo, sin trazabilidad ni criterios claros).
+3. Proporciona un comentario detallado para cada requisito, explicando:
+   - Problemas de claridad, comprensibilidad o ambigüedad (si los hay).
+   - Cumplimiento con ISO/IEC/IEEE 29148:2018 (SMART) e ISO/IEC 25010:2011.
+   - Sugerencias para mejorar el requisito (si aplica).
+4. Devuelve el resultado en el siguiente formato:
+   ```
+   Requisito ID: [requerimiento_id]
+   Puntuación: [1-5]
+   Comentario: [Explicación detallada, incluyendo problemas, cumplimiento con estándares y sugerencias]
+   ```
+
+### Requisitos a evaluar
+[Insertar aquí los requisitos en formato CSV, por ejemplo, los 4 requisitos que proporcionaste]
+
+### Notas adicionales
+- Si encuentras términos ambiguos (ej. "rápido", "eficiente"), señala su falta de especificidad y sugiere una definición medible.
+- Verifica que el campo `metodo_validacion` sea específico y verificable.
+- Evalúa si el campo `ejemplo_practico` mejora la comprensibilidad.
+- Considera las referencias normativas (`referencia_normativa`) y dependencias (`dependencias_exclusiones`) para verificar la trazabilidad.
